@@ -8,7 +8,7 @@ const STOREFRONT_TOKEN = import.meta.env.VITE_SHOPIFY_STOREFRONT_TOKEN;
 export const SHOPIFY_ENDPOINT = `https://${STORE_NAME}/api/2024-01/graphql.json`;
 
 // Header centralizzati per l'autenticazione delle richieste, come da blueprint
-export const SHOPIFY_HEADER = {
+export const SHOPIFY_HEADERS = {
     headers: {
         "Content-Type": "application/json",
         "X-Shopify-Storefront-Access-Token": STOREFRONT_TOKEN

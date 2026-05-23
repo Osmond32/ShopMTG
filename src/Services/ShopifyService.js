@@ -1,13 +1,9 @@
 // src/Services/ShopifyService.js
 import axios from "axios";
-import { SHOPIFY_ENDPOINT, SHOPIFY_HEADER } from "./config";
+// Assicuriamoci di importare correttamente sia SHOPIFY_ENDPOINT che SHOPIFY_HEADERS
+import { SHOPIFY_ENDPOINT, SHOPIFY_HEADERS } from "./config";
 
-/**
- * Recupera i prodotti (le carte Magic) dal catalogo Shopify.
- * Utilizza una query GraphQL per richiedere solo i dati necessari.
- */
 function getProducts() {
-  // Questo è il "foglietto" con la richiesta GraphQL in formato stringa
   const graphQLQuery = {
     query: `
       query {
@@ -30,6 +26,13 @@ function getProducts() {
                   }
                 }
               }
+              variants(first: 1) {
+                edges {
+                  node {
+                    id
+                  }
+                }
+              }
             }
           }
         }
@@ -37,11 +40,42 @@ function getProducts() {
     `
   };
 
-  // Inviamo la richiesta POST all'endpoint unico, passando la query e gli header di sicurezza
-  return axios.post(SHOPIFY_ENDPOINT, graphQLQuery, SHOPIFY_HEADER);
+  return axios.post(SHOPIFY_ENDPOINT, graphQLQuery, SHOPIFY_HEADERS);
 }
 
-// Esportiamo il servizio come oggetto per renderlo utilizzabile dalle Pagine, come da blueprint
+
+function createCheckout(cartItems) {
+  // Mappiamo gli articoli nel formato richiesto dalla Cart API di Shopify
+  const lines = cartItems.map(item => ({
+    merchandiseId: item.variants.edges[0].node.id, // ID della variante
+    quantity: item.quantity
+  }));
+
+  const graphQLMutation = {
+    query: `
+      mutation cartCreate($input: CartInput!) {
+        cartCreate(input: $input) {
+          cart {
+            checkoutUrl
+          }
+          userErrors {
+            field
+            message
+          }
+        }
+      }
+    `,
+    variables: {
+      input: {
+        lines: lines
+      }
+    }
+  };
+
+  return axios.post(SHOPIFY_ENDPOINT, graphQLMutation, SHOPIFY_HEADERS);
+}
+
 export default {
-  getProducts
+  getProducts,
+  createCheckout
 };

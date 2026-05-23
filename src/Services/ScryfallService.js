@@ -15,8 +15,14 @@ function getCardById(id) {
     return axios.get(`${SCRYFALL_BASE_URL}/cards/${id}`);
 }
 
+function getSets() {
+    return axios.get(`${SCRYFALL_BASE_URL}/sets`);
+}
+
 // Esportiamo i metodi del servizio come da blueprint
 export default {
     searchCards,
-    getCardById
+    getCardById,
+    getSets
+
 };

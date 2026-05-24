@@ -123,7 +123,7 @@ const ProductsPage = () => {
     };
 
     return (
-        <div className="min-h-screen bg-slate-950 text-slate-100 py-12 px-4">
+        <div className="min-h-screen bg-neutral-950 text-slate-100 py-12 px-4">
             <h1 className="text-3xl md:text-4xl font-black text-white mb-2 text-center">
                 {cards.length > 0 ? "Risultati Ricerca Globale 🃏" : "Il Nostro Magazzino Reale 🏪"}
             </h1>

@@ -66,7 +66,7 @@ const CartPage = () => {
     };
 
     return (
-        <div className="min-h-screen bg-slate-950 text-slate-100 py-12 px-4">
+        <div className="min-h-screen bg-neutral-950 text-slate-100 py-12 px-4">
             <div className="container mx-auto max-w-2xl">
                 <h1 className="text-3xl font-black text-white mb-6 text-center">Il Tuo Carrello 🛒</h1>
 

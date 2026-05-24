@@ -32,11 +32,11 @@ const SetsPage = () => {
         fetchSets();
     }, []);
 
-    if (loading) return <div className="text-center py-12 text-slate-400 font-medium min-h-screen bg-slate-950">Caricamento espansioni...</div>;
-    if (error) return <div className="text-center py-12 text-red-500 min-h-screen bg-slate-950">Errore: {error}</div>;
+    if (loading) return <div className="text-center py-12 text-slate-400 font-medium min-h-screen bg-neutral-950">Caricamento espansioni...</div>;
+    if (error) return <div className="text-center py-12 text-red-500 min-h-screen bg-neutral-950">Errore: {error}</div>;
 
     return (
-        <div className="min-h-screen bg-slate-950 text-slate-100 py-12 px-6">
+        <div className="min-h-screen bg-neutral-950 text-slate-100 py-12 px-6">
             <div className="max-w-6xl mx-auto mb-10 text-center">
                 <span className="text-amber-500 text-xs font-bold uppercase tracking-widest bg-amber-500/10 px-3 py-1 rounded-full border border-amber-500/20">
                     Cronologia Globale

@@ -32,10 +32,10 @@ const HomePage = () => {
     ];
 
     return (
-        <div className="min-h-screen bg-slate-950 text-slate-100 font-sans selection:bg-amber-500/30">
+        <div className="min-h-screen bg-neutral-950 text-slate-100 font-sans selection:bg-amber-500/30">
             
             {/* 1. HERO SECTION */}
-            <div className="relative min-h-[85vh] flex items-center justify-center overflow-hidden border-b border-amber-900/30 shadow-[0_10px_30px_rgba(0,0,0,0.8)]">
+            <div className="relative min-h-[85vh] flex items-center justify-center overflow-hidden border-b border-neutral-800 shadow-[0_10px_30px_rgba(0,0,0,0.8)]">
                 {/* Background Video */}
                 <video 
                     className="absolute inset-0 w-full h-full object-cover"
@@ -45,11 +45,27 @@ const HomePage = () => {
                     muted 
                     playsInline
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-neutral-950/20 to-transparent"></div>
                 
                 {/* Logo in alto a destra */}
                 <div className="absolute top-6 right-6 z-20">
                     <img src={LogoHero} alt="Hero Logo" className="w-48 md:w-64 lg:w-80 h-auto drop-shadow-2xl" />
+                </div>
+
+                {/* CTA Buttons - in basso a sinistra */}
+                <div className="absolute bottom-12 md:bottom-20 left-8 md:left-20 z-20 flex flex-col sm:flex-row gap-4">
+                    <Link 
+                        to="/sets" 
+                        className="bg-purple-700 hover:bg-purple-600 text-white font-black uppercase tracking-widest py-4 px-10 rounded-xl border-2 border-cyan-400 shadow-[0_0_15px_rgba(107,33,168,0.6)] hover:shadow-[0_0_25px_rgba(34,211,238,0.5)] transition-all flex items-center justify-center"
+                    >
+                        Espansioni
+                    </Link>
+                    <Link 
+                        to="/products" 
+                        className="bg-white hover:bg-gray-200 text-black font-black uppercase tracking-widest py-4 px-10 rounded-xl shadow-xl hover:shadow-2xl transition-all flex items-center justify-center"
+                    >
+                        Magazzino
+                    </Link>
                 </div>
             </div>
 

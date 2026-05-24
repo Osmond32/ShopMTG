@@ -16,7 +16,8 @@ const SetsPage = () => {
             
             const principalSets = allSets.filter(set => 
                 (set.set_type === "expansion" || set.set_type === "core") && 
-                !set.code.startsWith("y")
+                !set.code.startsWith("y") &&
+                set.card_count > 0 // Esclude set futuri vuoti
             );
 
             setSets(principalSets.slice(0, 150));

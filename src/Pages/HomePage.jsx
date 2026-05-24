@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import HeroVideo from "../assets/Hero.mp4";
+import LogoHero from "../assets/LogoHero.png";
 
 const HomePage = () => {
     const navigate = useNavigate();
@@ -34,42 +36,20 @@ const HomePage = () => {
             
             {/* 1. HERO SECTION */}
             <div className="relative min-h-[85vh] flex items-center justify-center overflow-hidden border-b border-amber-900/30 shadow-[0_10px_30px_rgba(0,0,0,0.8)]">
-                {/* Background Image con overlay */}
-                <div 
-                    className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-40 scale-105 transform hover:scale-110 transition-transform duration-[20s]"
-                    style={{ backgroundImage: "url('https://images.unsplash.com/photo-1605806616949-1e87b487cb2a?q=80&w=1920&auto=format&fit=crop')" }}
-                ></div>
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-transparent"></div>
+                {/* Background Video */}
+                <video 
+                    className="absolute inset-0 w-full h-full object-cover"
+                    src={HeroVideo} 
+                    autoPlay 
+                    loop 
+                    muted 
+                    playsInline
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent"></div>
                 
-                <div className="relative z-10 text-center px-4 max-w-5xl mx-auto flex flex-col items-center">
-                    <div className="inline-block mb-4 px-4 py-1.5 rounded-full border border-amber-500/30 bg-slate-900/50 backdrop-blur-md">
-                        <span className="text-amber-500 text-xs md:text-sm font-bold tracking-[0.2em] uppercase">Il Multiverso ti attende</span>
-                    </div>
-                    {/* Font serif per i titoli importanti (richiamo a MTG) */}
-                    <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white mb-6 drop-shadow-[0_2px_10px_rgba(0,0,0,0.8)]" style={{ fontFamily: "Georgia, serif" }}>
-                        Il Tempio delle Carte
-                    </h1>
-                    <p className="text-lg md:text-2xl text-slate-300 max-w-3xl mb-10 drop-shadow-md">
-                        Acquista, vendi e colleziona le reliquie più preziose di <strong className="text-amber-500 font-normal">Magic: The Gathering</strong>. Esplora il nostro catalogo esclusivo.
-                    </p>
-                    <div className="flex flex-col sm:flex-row gap-5">
-                        <Link 
-                            to="/products" 
-                            className="group relative overflow-hidden bg-gradient-to-r from-amber-600 to-orange-600 text-white font-bold py-4 px-10 rounded-sm shadow-[0_0_20px_rgba(245,158,11,0.3)] hover:shadow-[0_0_30px_rgba(245,158,11,0.6)] transition-all"
-                        >
-                            <span className="relative z-10 flex items-center gap-2">
-                                Entra nel Negozio
-                                <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" /></svg>
-                            </span>
-                            <div className="absolute inset-0 h-full w-full bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full group-hover:animate-shine"></div>
-                        </Link>
-                        <a 
-                            href="#database" 
-                            className="bg-slate-900/80 hover:bg-slate-800 text-slate-200 border border-slate-700 hover:border-amber-500/50 backdrop-blur-sm font-bold py-4 px-10 rounded-sm transition-all flex items-center justify-center gap-2"
-                        >
-                            Esplora il Database
-                        </a>
-                    </div>
+                {/* Logo in alto a destra */}
+                <div className="absolute top-6 right-6 z-20">
+                    <img src={LogoHero} alt="Hero Logo" className="w-48 md:w-64 lg:w-80 h-auto drop-shadow-2xl" />
                 </div>
             </div>
 

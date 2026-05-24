@@ -1,3 +1,30 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+  .neon-border-bottom {
+    border-bottom-width: 3px;
+    border-bottom-style: solid;
+    animation: neon-cycle 8s linear infinite;
+  }
+}
+
+@keyframes neon-cycle {
+  0%, 100% {
+    border-bottom-color: #ffffff;
+    box-shadow: 0 8px 20px -6px rgba(255, 255, 255, 0.8);
+  }
+  25% {
+    border-bottom-color: #22c55e;
+    box-shadow: 0 8px 20px -6px rgba(34, 197, 94, 0.8);
+  }
+  50% {
+    border-bottom-color: #ef4444;
+    box-shadow: 0 8px 20px -6px rgba(239, 68, 68, 0.8);
+  }
+  75% {
+    border-bottom-color: #3b82f6;
+    box-shadow: 0 8px 20px -6px rgba(59, 130, 246, 0.8);
+  }
+}

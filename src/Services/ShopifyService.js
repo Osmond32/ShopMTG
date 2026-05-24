@@ -30,6 +30,7 @@ function getProducts() {
                 edges {
                   node {
                     id
+                    quantityAvailable
                   }
                 }
               }

@@ -1,66 +1,101 @@
 // src/Components/ScryfallCard.jsx
 import React from "react";
-import { useNavigate } from "react-router-dom"; // 1. Importiamo l'hook di navigazione
+import { useCart } from "../Context/CartContext"; // Importiamo l'hook del carrello globale
 
-const ScryfallCard = ({ card, isPresent }) => {
-    const navigate = useNavigate(); // 2. Inizializziamo l'hook
+const ScryfallCard = ({ card, isPresent, availableQuantity }) => {
+    const { addToCart } = useCart();
 
-    const title = card.name;
-    const description = card.oracle_text;
-    const imageUrl = card.image_uris?.normal || card.image_uris?.small;
+    // Gestione immagini per Scryfall (bifacciali o normali) e fallback
+    const imageUrl = card.image_uris?.normal || 
+                     card.card_faces?.[0]?.image_uris?.normal || 
+                     "https://images.scryfall.com/cards/art_crop/front/a/e/ae5107c8-d32d-470b-9b7d-35529c165380.jpg";
 
-    const priceUSD = card.prices?.usd;
-    const priceEUR = card.prices?.eur;
+    // Funzione per gestire l'acquisto immediato
+    const handleAddToCart = (e) => {
+        e.preventDefault();
+        
+        // Se la carta arriva dalla vetrina Shopify, la aggiungiamo al carrello reale
+        if (card.isFromShopify && card.rawProduct) {
+            // Aggiungiamo direttamente l'oggetto Shopify rawProduct intero.
+            // Questo garantisce che la struttura contenga sia 'priceRange' (evitando crash in CartPage)
+            // sia il reale ID variante (ProductVariant) anziché l'ID prodotto (Product), risolvendo l'errore di checkout.
+            addToCart(card.rawProduct);
+            alert(`🃏 ${card.name} aggiunta al carrello con successo!`);
+        } else {
+            alert("Questa carta fa parte del database globale Scryfall e non è acquistabile al momento.");
+        }
+    };
 
     return (
-        <div className="bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col justify-between p-4 w-64 relative">
-
-            {isPresent && (
-                <span className="absolute top-6 left-6 bg-green-500 text-white text-xs font-bold px-2.5 py-1 rounded-full shadow-md z-10 animate-pulse">
-                    🟢 In Magazzino
-                </span>
-            )}
-
-            {imageUrl ? (
-                <img
-                    src={imageUrl}
-                    alt={title}
-                    className="w-full h-72 object-contain rounded-lg bg-gray-50 mb-4"
+        <div className="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-amber-500/50 transition-all duration-300 flex flex-col justify-between group shadow-lg w-full max-w-[280px] mx-auto">
+            
+            {/* Area Immagine della Carta */}
+            <div className="relative bg-slate-950 p-4 flex items-center justify-center h-72">
+                <img 
+                    src={imageUrl} 
+                    alt={card.name} 
+                    className="max-h-full max-w-full object-contain group-hover:scale-102 transition-transform duration-300"
                 />
-            ) : (
-                <div className="w-full h-72 bg-gray-100 rounded-lg mb-4 flex items-center justify-center text-gray-400 text-sm">
-                    Immagine non disponibile
-                </div>
-            )}
+                
+                {/* Bollino Disponibile (si accende se la trovi tramite ricerca) */}
+                {isPresent && (
+                    <span className="absolute top-3 right-3 bg-emerald-500 text-slate-950 text-xs font-black px-2.5 py-1 rounded-full shadow-md z-10">
+                        ✨ Disp. {availableQuantity > 0 ? `(${availableQuantity})` : ""}
+                    </span>
+                )}
+            </div>
 
-            <div className="flex-1 flex flex-col justify-between">
+            {/* Area Dettagli, Descrizione e Prezzi */}
+            <div className="p-5 flex-1 flex flex-col justify-between border-t border-slate-800/60">
                 <div>
-                    <h3 className="font-bold text-lg text-gray-800 mb-1 truncate" title={title}>
-                        {title}
+                    <h3 className="font-bold text-base text-white group-hover:text-amber-400 transition-colors line-clamp-1">
+                        {card.name}
                     </h3>
-                    <p className="text-gray-600 text-xs mb-4 line-clamp-3">
-                        {description || "Nessun testo di espansione disponibile."}
+                    
+                    {/* Mostra la descrizione di Shopify (o la type_line di Scryfall) */}
+                    <p className="text-slate-400 text-xs mt-2 line-clamp-2 min-h-[2rem]">
+                        {card.type_line || "Nessuna descrizione disponibile."}
                     </p>
                 </div>
 
-                <div className="mt-auto border-t border-gray-100 pt-3">
-                    <div className="flex justify-between text-xs text-gray-500 mb-3">
-                        <span>Valore USD: {priceUSD ? `$${priceUSD}` : "N/D"}</span>
-                        <span>Valore EUR: {priceEUR ? `€${priceEUR}` : "N/D"}</span>
-                    </div>
+                {/* Sezione Acquisto Immediato o Consultazione */}
+                <div className="mt-5 pt-3 border-t border-slate-800 flex flex-col gap-3">
+                    {card.isFromShopify ? (
+                        <>
+                            {/* Quantità disponibile nel magazzino */}
+                            {availableQuantity > 0 && (
+                                <div className="flex justify-between items-center text-xs border-b border-slate-800/40 pb-2 mb-1">
+                                    <span className="text-slate-500 font-medium">Magazzino:</span>
+                                    <span className="text-emerald-400 font-mono font-bold">
+                                        {availableQuantity} pezzi
+                                    </span>
+                                </div>
+                            )}
 
-                    {/* 3. Al click, navighiamo verso la rotta di dettaglio passando l'ID unico di Scryfall */}
-                    <button
-                        onClick={() => {
-                            console.log("Id della carta cliccata:", card.id); // <-- Aggiungi questo per testare
-                            navigate(`/product/${card.id}`);
-                        }}
-                        className="w-full bg-slate-800 hover:bg-slate-900 text-white font-semibold py-2 px-4 rounded-lg text-sm transition-colors duration-200"
-                    >
-                        Dettagli Catalogo
-                    </button>
+                            {/* Se la carta è nel tuo magazzino reale, mostra PREZZO e pulsante ACQUISTA */}
+                            <div className="flex justify-between items-center">
+                                <span className="text-slate-500 text-xs font-medium">Prezzo:</span>
+                                <span className="text-amber-400 font-mono font-black text-lg">
+                                    {parseFloat(card.price).toFixed(2)} EUR
+                                </span>
+                            </div>
+                            
+                            <button 
+                                onClick={handleAddToCart}
+                                className="w-full bg-amber-500 hover:bg-amber-600 text-slate-950 font-black py-2.5 px-4 rounded-xl text-sm transition-all shadow-md"
+                            >
+                                🛒 Aggiungi al Carrello
+                            </button>
+                        </>
+                    ) : (
+                        /* Se l'utente sta solo guardando i risultati generali di Scryfall */
+                        <div className="text-center text-xs text-slate-600 font-medium py-2 bg-slate-950/40 rounded-lg border border-slate-950">
+                            Solo consultazione
+                        </div>
+                    )}
                 </div>
             </div>
+
         </div>
     );
 };

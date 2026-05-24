@@ -104,9 +104,16 @@ const ProductPage = () => {
                         {shopifyProduct ? (
                             <div className="bg-blue-50 border border-blue-100 rounded-xl p-4 mb-4">
                                 <h4 className="text-xs font-bold text-blue-500 uppercase mb-1">Prezzo nel nostro Store</h4>
-                                <div className="text-3xl font-black text-blue-900 mb-3">
+                                <div className="text-3xl font-black text-blue-900 mb-2">
                                     {parseFloat(shopifyProduct.priceRange.minVariantPrice.amount).toFixed(2)} {shopifyProduct.priceRange.minVariantPrice.currencyCode}
                                 </div>
+
+                                {/* Mostra la quantità a magazzino del prodotto in un badge */}
+                                {shopifyProduct.variants?.edges?.[0]?.node?.quantityAvailable > 0 && (
+                                    <div className="text-xs font-bold text-emerald-600 mb-4 bg-emerald-50 border border-emerald-100 px-3 py-1.5 rounded-lg inline-flex items-center gap-1.5 shadow-sm">
+                                        📦 Disponibili a magazzino: {shopifyProduct.variants.edges[0].node.quantityAvailable} pezzi
+                                    </div>
+                                )}
 
                                 {/* 3. Colleghiamo la nostra funzione di aggiunta al click */}
                                 <button

@@ -19,10 +19,17 @@ function getSets() {
     return axios.get(`${SCRYFALL_BASE_URL}/sets`);
 }
 
+/**
+ * Recupera la carta più popolare (copertina) di un set specifico per usarla come sfondo.
+ */
+function getSetCoverCard(setCode) {
+    return axios.get(`${SCRYFALL_BASE_URL}/cards/search?q=set:${setCode}+is:booster&order=edhrec`);
+}
+
 // Esportiamo i metodi del servizio come da blueprint
 export default {
     searchCards,
     getCardById,
-    getSets
-
+    getSets,
+    getSetCoverCard
 };

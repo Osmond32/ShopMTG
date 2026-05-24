@@ -1,11 +1,15 @@
 // src/Pages/ProductsPage.jsx
 import React, { useState, useEffect } from "react";
+import { useSearchParams } from "react-router-dom"; // Importiamo useSearchParams per leggere i parametri URL
 import ScryfallService from "../Services/ScryfallService";
 import ShopifyService from "../Services/ShopifyService"; // 1. Importiamo il servizio Shopify
 import ScryfallCard from "../Components/ScryfallCard";
 
 const ProductsPage = () => {
-    const [query, setQuery] = useState("");
+    const [searchParams, setSearchParams] = useSearchParams();
+    const urlQuery = searchParams.get("q");
+
+    const [query, setQuery] = useState(urlQuery || "");
     const [cards, setCards] = useState([]);
     const [shopifyProducts, setShopifyProducts] = useState([]); // Stato per il magazzino Shopify
     const [loading, setLoading] = useState(false);
@@ -27,9 +31,32 @@ const ProductsPage = () => {
         fetchShopifyInventory();
     }, []);
 
+    // Avvia la ricerca automatica se c'è una query nell'URL (ad es. cliccando da SetsPage)
+    useEffect(() => {
+        if (urlQuery) {
+            setQuery(urlQuery);
+            const performUrlSearch = async () => {
+                setLoading(true);
+                try {
+                    const response = await ScryfallService.searchCards(urlQuery);
+                    setCards(response.data.data);
+                } catch (error) {
+                    console.error("❌ Errore durante la ricerca automatica dell'URL:", error);
+                    setCards([]);
+                } finally {
+                    setLoading(false);
+                }
+            };
+            performUrlSearch();
+        }
+    }, [urlQuery]);
+
     const handleSearch = async (e) => {
         e.preventDefault();
         if (!query.trim()) return;
+
+        // Aggiorna anche il parametro URL per mantenere coerente lo stato e consentire condivisione link
+        setSearchParams({ q: query });
 
         setLoading(true);
         try {

@@ -4,6 +4,8 @@ import HeroVideo from "../assets/Hero.mp4";
 import LogoHero from "../assets/LogoHero.png";
 import ScryfallService from "../Services/ScryfallService";
 import ImgSetCard from "../Components/ImgSetCard";
+import MagicArenaSection from "../Components/MagicArenaSection";
+import OurGamesSection from "../Components/OurGamesSection";
 
 const HomePage = () => {
     const navigate = useNavigate();
@@ -98,6 +100,9 @@ const HomePage = () => {
                 )}
             </div>
 
+            {/* 3. SECTION MTG ARENA (FULL-WIDTH BANNER) */}
+            <MagicArenaSection />
+
             {/* 4. FORMATI DI GIOCO */}
             <div className="max-w-7xl mx-auto px-4 py-24">
                 <div className="text-center mb-16">
@@ -126,6 +131,9 @@ const HomePage = () => {
                     ))}
                 </div>
             </div>
+
+            {/* 5. SEZIONE "OUR GAMES" */}
+            <OurGamesSection />
         </div>
     );
 };

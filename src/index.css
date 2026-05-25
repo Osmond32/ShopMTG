@@ -28,3 +28,57 @@
     box-shadow: 0 8px 20px -6px rgba(59, 130, 246, 0.8);
   }
 }
+
+/* Nascondi il cursore standard del sistema su tutto il sito per i dispositivi che supportano il puntatore */
+@media (pointer: fine) {
+  body, a, button, [role="button"], .cursor-pointer, input {
+    cursor: none !important;
+  }
+}
+
+/* Animazioni per il Punto di Luce Brillante */
+@keyframes point-glow {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1);
+    box-shadow: 0 0 12px 4px rgba(245, 158, 11, 0.8), 0 0 20px 8px rgba(245, 158, 11, 0.4);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.15);
+    box-shadow: 0 0 18px 6px rgba(251, 191, 36, 0.95), 0 0 28px 12px rgba(251, 191, 36, 0.6);
+  }
+}
+
+@keyframes hover-glow {
+  0%, 100% {
+    transform: translate(-50%, -50%) scale(1.1);
+    box-shadow: 0 0 15px 5px rgba(34, 211, 238, 0.8), 0 0 25px 10px rgba(34, 211, 238, 0.4);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.25);
+    box-shadow: 0 0 22px 8px rgba(34, 211, 238, 1), 0 0 35px 15px rgba(34, 211, 238, 0.6);
+  }
+}
+
+@keyframes trail-fade {
+  0% {
+    opacity: 0.8;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.3);
+  }
+}
+
+.magic-point-core {
+  animation: point-glow 1.5s ease-in-out infinite;
+}
+
+.magic-point-hover {
+  animation: hover-glow 1.2s ease-in-out infinite;
+}
+
+.magic-trail {
+  animation: trail-fade 0.5s cubic-bezier(0.1, 0.8, 0.3, 1) forwards;
+}
+

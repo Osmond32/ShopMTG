@@ -17,7 +17,7 @@ const Footer = () => {
                             <img src={logoNavBar} alt="Magic Store Logo" className="h-12 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity" />
                         </Link>
                         <p className="text-sm leading-relaxed max-w-sm">
-                           Non è un vero shop ma solo un progetto personale per mostrare le mie competenze. Tutte le carte e i dati sono presi da Scryfall, mentre i prodotti reali sono simulati tramite Shopify. Grazie per aver visitato il mio progetto!
+                           ATTENZIONE!!! Non è un vero shop ma solo un progetto personale per mostrare le mie competenze. Tutte le carte e i dati sono presi da Scryfall, mentre i prodotti reali sono simulati tramite Shopify. Grazie per aver visitato il mio progetto!
                         </p>
                     </div>
 

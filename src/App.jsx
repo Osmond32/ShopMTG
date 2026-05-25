@@ -11,12 +11,14 @@ import CartPage from "./Pages/CartPage";
 import SetsPage from "./Pages/SetsPage";
 import Footer from "./Components/Footer"; // Importiamo il Footer
 import ScrollToTop from "./Components/ScrollToTop"; // Importiamo ScrollToTop
+import MagicCursor from "./Components/MagicCursor"; // Importiamo il cursore magico
 
 function App() {
   return (
     <CartProvider>
       <Router>
         <ScrollToTop />
+        <MagicCursor />
         <div className="flex flex-col min-h-screen">
           <NavBar />
           <main className="flex-grow">

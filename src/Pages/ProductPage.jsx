@@ -17,22 +17,61 @@ const ProductPage = () => {
     const fetchAllDetails = async () => {
         try {
             setLoading(true);
-            const scryfallResponse = await ScryfallService.getCardById(id);
-            const scryfallCardData = scryfallResponse.data;
-            setCard(scryfallCardData);
+            let scryfallCardData = null;
+            let shopifyMatch = null;
+            
+            // L'id potrebbe essere un url codificato se proviene da Shopify (es. gid://shopify/Product/...)
+            const decodedId = decodeURIComponent(id);
 
-            const shopifyResponse = await ShopifyService.getProducts();
-            const shopifyInventory = shopifyResponse.data.data.products.edges;
+            // Controlliamo se è un ID di Shopify
+            if (decodedId.includes("shopify")) {
+                const shopifyResponse = await ShopifyService.getProducts();
+                const shopifyInventory = shopifyResponse.data.data.products.edges;
+                shopifyMatch = shopifyInventory.find(item => item.node.id === decodedId);
 
-            const match = shopifyInventory.find(
-                (item) => item.node.title.toLowerCase() === scryfallCardData.name.toLowerCase()
-            );
-
-            if (match) {
-                setShopifyProduct(match.node);
-                console.log("🏪 Match trovato su Shopify:", match.node);
+                if (shopifyMatch) {
+                    setShopifyProduct(shopifyMatch.node);
+                    // Cerchiamo la carta su Scryfall usando il nome esatto
+                    try {
+                        const scryfallResponse = await ScryfallService.searchCards(`!"${shopifyMatch.node.title}"`);
+                        if (scryfallResponse.data?.data?.length > 0) {
+                            scryfallCardData = scryfallResponse.data.data[0];
+                        }
+                    } catch (err) {
+                        console.warn("Non è stato possibile trovare la carta su Scryfall per:", shopifyMatch.node.title);
+                    }
+                }
             } else {
-                setShopifyProduct(null);
+                // E' un normale ID di Scryfall
+                const scryfallResponse = await ScryfallService.getCardById(decodedId);
+                scryfallCardData = scryfallResponse.data;
+
+                const shopifyResponse = await ShopifyService.getProducts();
+                const shopifyInventory = shopifyResponse.data.data.products.edges;
+
+                shopifyMatch = shopifyInventory.find(
+                    (item) => item.node.title.toLowerCase() === scryfallCardData.name.toLowerCase()
+                );
+
+                if (shopifyMatch) {
+                    setShopifyProduct(shopifyMatch.node);
+                } else {
+                    setShopifyProduct(null);
+                }
+            }
+
+            if (scryfallCardData) {
+                setCard(scryfallCardData);
+            } else if (shopifyMatch) {
+                // Fallback nel caso la carta non esista su scryfall ma l'abbiamo su Shopify
+                setCard({
+                    id: decodedId,
+                    name: shopifyMatch.node.title,
+                    image_uris: { normal: shopifyMatch.node.images?.edges[0]?.node?.url },
+                    set: "Sconosciuta",
+                    rarity: "Sconosciuta",
+                    oracle_text: shopifyMatch.node.description || "Nessun dettaglio extra disponibile da Scryfall."
+                });
             }
 
         } catch (error) {

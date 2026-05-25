@@ -26,7 +26,7 @@ const ScryfallCard = ({ card, isPresent, availableQuantity }) => {
         <div className="bg-slate-900 border border-slate-800 rounded-2xl overflow-hidden hover:border-amber-500/50 transition-all duration-300 flex flex-col justify-between group shadow-lg w-full max-w-[280px] mx-auto">
             
             {/* Rendiamo cliccabile l'immagine e il titolo verso la ProductPage */}
-            <Link to={`/product/${card.id}`} className="block relative bg-slate-950 p-4 flex items-center justify-center h-72 cursor-pointer">
+            <Link to={`/product/${encodeURIComponent(card.id)}`} className="block relative bg-slate-950 p-4 flex items-center justify-center h-72 cursor-pointer">
                 <img 
                     src={imageUrl} 
                     alt={card.name} 
@@ -42,7 +42,7 @@ const ScryfallCard = ({ card, isPresent, availableQuantity }) => {
 
             <div className="p-5 flex-1 flex flex-col justify-between border-t border-slate-800/60">
                 <div>
-                    <Link to={`/product/${card.id}`} className="cursor-pointer">
+                    <Link to={`/product/${encodeURIComponent(card.id)}`} className="cursor-pointer">
                         <h3 className="font-bold text-base text-white hover:text-amber-400 transition-colors line-clamp-1">
                             {card.name}
                         </h3>
@@ -81,7 +81,7 @@ const ScryfallCard = ({ card, isPresent, availableQuantity }) => {
                         </>
                     ) : (
                         <Link 
-                            to={`/product/${card.id}`}
+                            to={`/product/${encodeURIComponent(card.id)}`}
                             className="w-full bg-blue-500 hover:bg-blue-400 text-white font-black py-2.5 px-4 rounded-xl text-sm transition-all shadow-[0_0_10px_rgba(59,130,246,0.3)] hover:shadow-[0_0_15px_rgba(59,130,246,0.5)] text-center inline-block"
                         >
                             👁️ Visualizza Carta

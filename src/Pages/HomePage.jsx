@@ -44,10 +44,10 @@ const HomePage = () => {
     }, []);
 
     const formats = [
-        { name: "Commander", desc: "Gioca in multiplayer con il tuo generale e altri 99 alleati.", color: "from-amber-800 to-amber-950", link: "https://magic.wizards.com/en/formats/commander" },
-        { name: "Standard", desc: "Costruisci mazzi con le espansioni più recenti e rimani al passo.", color: "from-blue-800 to-blue-950", link: "https://magic.wizards.com/en/formats/standard" },
-        { name: "Modern", desc: "Il formato competitivo più amato. Usa carte dall'8a Edizione in poi.", color: "from-slate-800 to-slate-950", link: "https://magic.wizards.com/en/formats/modern" },
-        { name: "Pauper", desc: "La vera essenza di Magic. Gioca usando esclusivamente carte comuni.", color: "from-green-800 to-green-950", link: "https://magic.wizards.com/en/formats/pauper" },
+        { name: "Commander", desc: "Jouez en multijoueur avec votre commandant et 99 autres cartes uniques.", color: "from-amber-800 to-amber-950", link: "https://magic.wizards.com/en/formats/commander" },
+        { name: "Standard", desc: "Construisez des decks avec les extensions les plus récentes et restez au top.", color: "from-blue-800 to-blue-950", link: "https://magic.wizards.com/en/formats/standard" },
+        { name: "Modern", desc: "Le format compétitif le plus populaire. Utilisez des cartes de la 8ème édition à aujourd'hui.", color: "from-slate-800 to-slate-950", link: "https://magic.wizards.com/en/formats/modern" },
+        { name: "Pauper", desc: "La véritable essence de Magic. Jouez en utilisant exclusivement des cartes communes.", color: "from-green-800 to-green-950", link: "https://magic.wizards.com/en/formats/pauper" },
     ];
 
     return (
@@ -71,10 +71,10 @@ const HomePage = () => {
 
                 <div className="absolute bottom-12 md:bottom-20 left-8 md:left-20 z-20 flex flex-col sm:flex-row gap-4">
                     <Link to="/sets" className="bg-purple-700 hover:bg-purple-600 text-white font-black uppercase tracking-widest py-4 px-10 rounded-xl border-2 border-cyan-400 shadow-[0_0_15px_rgba(107,33,168,0.6)] hover:shadow-[0_0_25px_rgba(34,211,238,0.5)] transition-all flex items-center justify-center">
-                        Espansioni
+                        Extensions
                     </Link>
                     <Link to="/products" className="bg-white hover:bg-gray-200 text-black font-black uppercase tracking-widest py-4 px-10 rounded-xl shadow-xl hover:shadow-2xl transition-all flex items-center justify-center">
-                        Magazzino
+                        Boutique
                     </Link>
                 </div>
             </div>
@@ -83,14 +83,14 @@ const HomePage = () => {
             <div className="max-w-7xl mx-auto px-4 py-16 relative z-20 mt-12 border-t border-neutral-800/50">
                 <div className="flex items-end justify-between mb-10">
                     <div>
-                        <h2 className="text-3xl font-bold text-white" style={{ fontFamily: "Georgia, serif" }}>Ultime Espansioni</h2>
+                        <h2 className="text-3xl font-bold text-white" style={{ fontFamily: "Georgia, serif" }}>Dernières Extensions</h2>
                         <div className="w-20 h-1 bg-amber-500 mt-2"></div>
                     </div>
-                    <Link to="/sets" className="text-amber-500 hover:text-amber-400 font-semibold text-sm hidden sm:block transition-colors">Vedi tutti i set &rarr;</Link>
+                    <Link to="/sets" className="text-amber-500 hover:text-amber-400 font-semibold text-sm hidden sm:block transition-colors">Voir toutes les extensions &rarr;</Link>
                 </div>
                 
                 {loadingSets ? (
-                    <div className="text-center py-12 text-slate-400">Caricamento delle ultime espansioni...</div>
+                    <div className="text-center py-12 text-slate-400">Chargement des dernières extensions...</div>
                 ) : (
                     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                         {latestSets.map((set) => (
@@ -106,7 +106,7 @@ const HomePage = () => {
             {/* 4. FORMATI DI GIOCO */}
             <div className="max-w-7xl mx-auto px-4 py-24">
                 <div className="text-center mb-16">
-                    <h2 className="text-4xl font-bold text-white mb-4" style={{ fontFamily: "Georgia, serif" }}>Scegli il tuo Campo di Battaglia</h2>
+                    <h2 className="text-4xl font-bold text-white mb-4" style={{ fontFamily: "Georgia, serif" }}>Choisissez votre Champ de Bataille</h2>
                     <div className="w-24 h-1 bg-amber-500 mx-auto"></div>
                 </div>
 
@@ -124,7 +124,7 @@ const HomePage = () => {
                                 <h3 className="text-2xl font-bold text-white mb-3" style={{ fontFamily: "Georgia, serif" }}>{format.name}</h3>
                                 <p className="text-white/80 text-sm mb-6 flex-grow">{format.desc}</p>
                                 <span className="text-white font-bold text-sm flex items-center gap-1 group-hover:text-amber-300 transition-colors mt-auto">
-                                    Scopri di più <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+                                    En savoir plus <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
                                 </span>
                             </div>
                         </a>

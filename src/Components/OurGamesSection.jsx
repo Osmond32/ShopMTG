@@ -6,34 +6,34 @@ export default function OurGamesSection() {
     {
       title: "MTG ARENA",
       image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=600&q=80", // Gaming setup / e-sport
-      desc: "Bring the strategy. Bring the action. MTG Arena brings the legendary strategy card game to PC, Mac, Android, and iOS.",
+      desc: "Déployez votre stratégie. Entrez dans l'action. MTG Arena apporte le légendaire jeu de cartes stratégique sur PC, Mac, Android et iOS.",
       links: [
-        { text: "Play Free", url: "https://magic.wizards.com/en/mtgarena" }
+        { text: "Jouer Gratuitement", url: "https://magic.wizards.com/en/mtgarena" }
       ]
     },
     {
-      title: "TABLETOP",
+      title: "SUR TABLE",
       image: "https://images.unsplash.com/photo-1610890716171-6b1bb98ffd09?auto=format&fit=crop&w=600&q=80", // Board game night with friends
-      desc: "Magic is about community. Gather and play your way whether at your local game store, at home with friends, or online with SpellTable.",
+      desc: "Magic est une question de communauté. Rassemblez-vous et jouez à votre façon, que ce soit dans votre boutique locale, chez vous avec des amis ou en ligne avec SpellTable.",
       links: [
-        { text: "Find a Product", url: "/products" },
-        { text: "Try SpellTable", url: "https://www.spelltable.com/" }
+        { text: "Trouver un Produit", url: "/products" },
+        { text: "Essayer SpellTable", url: "https://www.spelltable.com/" }
       ]
     },
     {
       title: "MAGIC ONLINE",
       image: "https://images.unsplash.com/photo-1587202372775-e229f172b9d7?auto=format&fit=crop&w=600&q=80", // Classic gaming setup / retro screen
-      desc: "Experience the original digital platform for fans of Legacy, Modern, and other classic Magic formats. Available on PC!",
+      desc: "Découvrez la plateforme numérique originale pour les fans de Legacy, Modern et autres formats classiques de Magic. Disponible sur PC !",
       links: [
-        { text: "Play Now", url: "https://magic.wizards.com/en/mtgo" }
+        { text: "Jouer Maintenant", url: "https://magic.wizards.com/en/mtgo" }
       ]
     },
     {
-      title: "COMPETITIVE",
+      title: "COMPÉTITIF",
       image: "https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=600&q=80", // Champion trophy / e-sports arena
-      desc: "Follow the Magic Pro League, compete in digital and tabletop tournaments and raise the champion's cup!",
+      desc: "Suivez la Magic Pro League, participez à des tournois numériques et sur table et soulevez la coupe du champion !",
       links: [
-        { text: "Learn More", url: "https://magic.wizards.com/en/news/competitive" }
+        { text: "En savoir plus", url: "https://magic.wizards.com/en/news/competitive" }
       ]
     }
   ];
@@ -50,7 +50,7 @@ export default function OurGamesSection() {
             className="text-4xl md:text-5xl font-black text-white tracking-widest uppercase mb-4"
             style={{ fontFamily: "Georgia, serif" }}
           >
-            OUR GAMES
+            NOS JEUX
           </h2>
           <div className="w-24 h-1 bg-gradient-to-r from-transparent via-amber-500 to-transparent mx-auto"></div>
         </div>

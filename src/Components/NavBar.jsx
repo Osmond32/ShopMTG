@@ -20,20 +20,20 @@ const NavBar = () => {
 
                 <div className="flex items-center gap-8 font-bold text-base tracking-wide text-white uppercase">
                     <Link to="/" className="hover:text-amber-400 transition-colors drop-shadow-md">
-                        Home
+                        Accueil
                     </Link>
                     <Link to="/sets" className="hover:text-amber-400 transition-colors drop-shadow-md">
-                        Espansioni
+                        Extensions
                     </Link>
                     <Link to="/products" className="hover:text-amber-400 transition-colors drop-shadow-md">
-                        Magazzino
+                        Boutique
                     </Link>
 
                     <Link 
                         to="/cart" 
                         className="bg-red-600 hover:bg-red-800 text-white px-6 py-3 rounded-xl flex items-center gap-2 font-black transition-all shadow-[0_0_15px_rgba(239,68,68,0.6)] border border-red-300 relative"
                     >
-                        🛒 Carrello
+                        🛒 Panier
                         {totalItems > 0 && (
                             <span className="absolute -top-3 -right-3 bg-white text-red-700 text-xs font-black w-7 h-7 rounded-full flex items-center justify-center animate-bounce shadow-lg border-2 border-red-600">
                                 {totalItems}

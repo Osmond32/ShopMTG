@@ -158,7 +158,7 @@ const ImgSetCard = ({ set }) => {
                             📅 {releaseYear}
                         </span>
                         <span className="flex items-center gap-1 bg-slate-950/40 px-2 py-0.5 rounded border border-slate-900">
-                            🃏 {set.card_count} carte
+                            🃏 {set.card_count} cartes
                         </span>
                     </div>
                 </div>
@@ -169,7 +169,7 @@ const ImgSetCard = ({ set }) => {
                         {set.set_type.replace("_", " ")}
                     </span>
                     <span className="inline-flex items-center gap-1 text-[11px] font-extrabold text-amber-500 group-hover:text-amber-400 transition-colors">
-                        Esplora Carte
+                        Explorer les cartes
                         <span className="transform translate-x-0 group-hover:translate-x-1 transition-transform duration-300">
                             →
                         </span>

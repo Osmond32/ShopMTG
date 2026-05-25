@@ -126,35 +126,35 @@ const ProductsPage = () => {
     return (
         <div className="min-h-screen bg-neutral-950 text-slate-100 py-12 px-4">
             <h1 className="text-3xl md:text-4xl font-black text-white mb-2 text-center">
-                {cards.length > 0 ? "Risultati Ricerca Globale 🃏" : "Il Nostro Magazzino Reale 🏪"}
+                {cards.length > 0 ? "Résultats de Recherche Globale 🃏" : "Notre Stock Réel 🏪"}
             </h1>
             <p className="text-center text-slate-400 text-sm mb-8">
                 {cards.length > 0
-                    ? "Esplorando il database mondiale di Magic."
-                    : "Sfoglia le carte attualmente disponibili in negozio e pronte all'acquisto."}
+                    ? "Exploration de la base de données mondiale de Magic."
+                    : "Parcourez les cartes actuellement disponibles en magasin et prêtes à l'achat."}
             </p>
 
             {/* Barra di ricerca sempre presente in cima per esplorare altro */}
             <form onSubmit={handleSearch} className="max-w-md mx-auto mb-12 flex gap-2">
                 <input
                     type="text"
-                    placeholder="Cerca un'altra carta nel multiverso..."
+                    placeholder="Rechercher une autre carte dans le multivers..."
                     className="flex-1 px-4 py-3 bg-slate-900 border border-slate-800 rounded-xl text-white placeholder-slate-600 focus:outline-none focus:border-amber-500 transition-colors"
                     value={query}
                     onChange={(e) => setQuery(e.target.value)}
                 />
                 <button
                     type="submit"
-                    className="bg-gradient-to-r from-amber-500 to-orange-500 text-slate-950 font-black py-3 px-6 rounded-xl transition-all"
+                    className="bg-gradient-to-r from-amber-500 to-orange-500 text-slate-950 font-black py-3 px-6 rounded-xl transition-all cursor-none"
                 >
-                    Cerca
+                    Rechercher
                 </button>
             </form>
 
             {/* Griglia Dinamica */}
             {loading ? (
                 <div className="text-center text-slate-400 font-medium py-12">
-                    Caricamento del Magazzino...
+                    Chargement du Stock...
                 </div>
             ) : (
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
@@ -174,7 +174,7 @@ const ProductsPage = () => {
             {/* Messaggio se lo store Shopify è vuoto e non si è cercato nulla */}
             {cardsToDisplay.length === 0 && !loading && (
                 <div className="text-center text-slate-500 mt-12 max-w-sm mx-auto text-sm bg-slate-900/50 border border-slate-900 p-6 rounded-2xl">
-                    <p>Il magazzino è attualmente vuoto. Carica dei prodotti su Shopify per vederli apparire qui!</p>
+                    <p>Le stock est actuellement vide. Chargez des produits sur Shopify pour les voir apparaître ici !</p>
                 </div>
             )}
         </div>

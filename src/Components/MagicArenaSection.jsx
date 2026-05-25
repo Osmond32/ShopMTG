@@ -28,13 +28,13 @@ export default function MagicArenaSection() {
             className="text-3xl md:text-5xl font-black text-white leading-tight mb-4 tracking-wide uppercase"
             style={{ fontFamily: "Georgia, serif" }}
           >
-            PLAY MAGIC ANYWHERE
+            JOUEZ À MAGIC PARTOUT
           </h2>
 
           {/* Description */}
           <p className="text-slate-300 text-sm md:text-base mb-8 leading-relaxed max-w-lg font-medium">
-            Start playing for free! MTG Arena is a digital collectible card game available on desktop and mobile. 
-            Get <span className="text-amber-400 font-bold">3 free digital card packs</span> sent to your in-game inbox when you login!
+            Commencez à jouer gratuitement ! MTG Arena est un jeu de cartes à collectionner numérique disponible sur PC et mobile. 
+            Obtenez <span className="text-amber-400 font-bold">3 boosters numériques gratuits</span> envoyés dans votre boîte de réception en jeu lors de votre connexion !
           </p>
 
           {/* Get Started Button (Torch orange style matching the reference image) */}
@@ -52,7 +52,7 @@ export default function MagicArenaSection() {
             >
               <path d="M0 3.449L9.75 2.1v9.45H0V3.449zM0 12.45h9.75v9.45L0 20.551v-8.1zM10.95 1.95L24 0v11.55H10.95V1.95zM10.95 12.45H24v11.55l-13.05-1.95v-9.6z" />
             </svg>
-            <span>GET STARTED</span>
+            <span>COMMENCER</span>
           </a>
         </div>
       </div>

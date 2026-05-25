@@ -37,7 +37,7 @@ const CartPage = () => {
             const response = await ShopifyService.createCheckout(cart);
             
             if (!response.data || !response.data.data || !response.data.data.cartCreate) {
-                alert("❌ Errore di comunicazione con Shopify. Controlla la console.");
+                alert("❌ Erreur de communication avec Shopify. Veuillez vérifier la console.");
                 console.error("Risposta malformata:", response.data);
                 return;
             }
@@ -45,12 +45,12 @@ const CartPage = () => {
             const { cart: shopifyCart, userErrors } = response.data.data.cartCreate;
 
             if (userErrors && userErrors.length > 0) {
-                alert(`❌ Errore Shopify: ${userErrors[0].message}`);
+                alert(`❌ Erreur Shopify : ${userErrors[0].message}`);
                 return;
             }
 
             if (!shopifyCart || !shopifyCart.checkoutUrl) {
-                alert("❌ Errore Critico: Sessione di pagamento non generata.");
+                alert("❌ Erreur Critique : Session de paiement non générée.");
                 return;
             }
 
@@ -59,7 +59,7 @@ const CartPage = () => {
 
         } catch (error) {
             console.error("❌ Errore durante la creazione del checkout:", error);
-            alert("Si è verificato un errore di rete durante il reindirizzamento.");
+            alert("Une erreur réseau s'est produite lors de la redirection.");
         } finally {
             setLoading(false);
         }
@@ -68,11 +68,11 @@ const CartPage = () => {
     return (
         <div className="min-h-screen bg-neutral-950 text-slate-100 py-12 px-4">
             <div className="container mx-auto max-w-2xl">
-                <h1 className="text-3xl font-black text-white mb-6 text-center">Il Tuo Carrello 🛒</h1>
+                <h1 className="text-3xl font-black text-white mb-6 text-center">Votre Panier 🛒</h1>
 
                 {cart.length === 0 ? (
                     <div className="text-center py-12 text-slate-500 bg-slate-900/40 border border-slate-900 rounded-2xl">
-                        Il tuo carrello è vuoto. Esplora il catalogo per aggiungere delle carte!
+                        Votre panier est vide. Explorez le catalogue pour ajouter des cartes !
                     </div>
                 ) : (
                     <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl">
@@ -82,7 +82,7 @@ const CartPage = () => {
                                 <div key={item.id} className="py-4 flex justify-between items-center">
                                     <div>
                                         <h3 className="font-bold text-white text-lg">{item.title}</h3>
-                                        <p className="text-slate-400 text-sm">Quantità: {item.quantity}</p>
+                                        <p className="text-slate-400 text-sm">Quantité : {item.quantity}</p>
                                     </div>
                                     <div className="text-right font-mono font-black text-amber-400">
                                         {(getItemPrice(item) * item.quantity).toFixed(2)} {getItemCurrency(item)}
@@ -93,7 +93,7 @@ const CartPage = () => {
 
                         {/* Totale e Azione */}
                         <div className="border-t border-slate-800 pt-4 flex justify-between items-center mb-6">
-                            <span className="text-slate-400 font-semibold">Totale Stimato:</span>
+                            <span className="text-slate-400 font-semibold">Total Estimé :</span>
                             <span className="text-2xl font-black text-white font-mono">
                                 {calculateTotal()} {getItemCurrency(cart[0])}
                             </span>
@@ -102,9 +102,9 @@ const CartPage = () => {
                         <button
                             onClick={handleCheckout}
                             disabled={loading}
-                            className="w-full bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 disabled:from-slate-700 disabled:to-slate-800 text-slate-950 font-black py-3.5 px-4 rounded-xl transition-all shadow-md text-center"
+                            className="w-full bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 disabled:from-slate-700 disabled:to-slate-800 text-slate-950 font-black py-3.5 px-4 rounded-xl transition-all shadow-md text-center cursor-none"
                         >
-                            {loading ? "Generazione pagamento..." : "🔒 Procedi al Pagamento Sicuro"}
+                            {loading ? "Génération du paiement..." : "🔒 Procéder au Paiement Sécurisé"}
                         </button>
                     </div>
                 )}

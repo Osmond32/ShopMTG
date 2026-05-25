@@ -16,9 +16,9 @@ const ScryfallCard = ({ card, isPresent, availableQuantity }) => {
         
         if (card.isFromShopify && card.rawProduct) {
             addToCart(card.rawProduct);
-            alert(`🃏 ${card.name} aggiunta al carrello con successo!`);
+            alert(`🃏 ${card.name} ajouté au panier avec succès !`);
         } else {
-            alert("Questa carta fa parte del database globale Scryfall e non è acquistabile al momento.");
+            alert("Cette carte fait partie de la base de données globale de Scryfall et n'est pas disponible à l'achat pour le moment.");
         }
     };
 
@@ -35,7 +35,7 @@ const ScryfallCard = ({ card, isPresent, availableQuantity }) => {
                 
                 {isPresent && (
                     <span className="absolute top-3 right-3 bg-emerald-500 text-slate-950 text-xs font-black px-2.5 py-1 rounded-full shadow-md z-10">
-                        ✨ Disp. {availableQuantity > 0 ? `(${availableQuantity})` : ""}
+                        ✨ Dispo. {availableQuantity > 0 ? `(${availableQuantity})` : ""}
                     </span>
                 )}
             </Link>
@@ -49,7 +49,7 @@ const ScryfallCard = ({ card, isPresent, availableQuantity }) => {
                     </Link>
                     
                     <p className="text-slate-400 text-xs mt-2 line-clamp-2 min-h-[2rem]">
-                        {card.type_line || "Nessuna descrizione disponibile."}
+                        {card.type_line || "Aucune description disponible."}
                     </p>
                 </div>
 
@@ -58,15 +58,15 @@ const ScryfallCard = ({ card, isPresent, availableQuantity }) => {
                         <>
                             {availableQuantity > 0 && (
                                 <div className="flex justify-between items-center text-xs border-b border-slate-800/40 pb-2 mb-1">
-                                    <span className="text-slate-500 font-medium">Magazzino:</span>
+                                    <span className="text-slate-500 font-medium">Stock :</span>
                                     <span className="text-emerald-400 font-mono font-bold">
-                                        {availableQuantity} pezzi
+                                        {availableQuantity} pièces
                                     </span>
                                 </div>
                             )}
 
                             <div className="flex justify-between items-center">
-                                <span className="text-slate-500 text-xs font-medium">Prezzo:</span>
+                                <span className="text-slate-500 text-xs font-medium">Prix :</span>
                                 <span className="text-amber-400 font-mono font-black text-lg">
                                     {parseFloat(card.price).toFixed(2)} EUR
                                 </span>
@@ -74,17 +74,17 @@ const ScryfallCard = ({ card, isPresent, availableQuantity }) => {
                             
                             <button 
                                 onClick={handleAddToCart}
-                                className="w-full bg-amber-500 hover:bg-amber-600 text-slate-950 font-black py-2.5 px-4 rounded-xl text-sm transition-all shadow-md"
+                                className="w-full bg-amber-500 hover:bg-amber-600 text-slate-950 font-black py-2.5 px-4 rounded-xl text-sm transition-all shadow-md cursor-none"
                             >
-                                🛒 Aggiungi al Carrello
+                                🛒 Ajouter au Panier
                             </button>
                         </>
                     ) : (
                         <Link 
                             to={`/product/${encodeURIComponent(card.id)}`}
-                            className="w-full bg-blue-500 hover:bg-blue-400 text-white font-black py-2.5 px-4 rounded-xl text-sm transition-all shadow-[0_0_10px_rgba(59,130,246,0.3)] hover:shadow-[0_0_15px_rgba(59,130,246,0.5)] text-center inline-block"
+                            className="w-full bg-blue-500 hover:bg-blue-400 text-white font-black py-2.5 px-4 rounded-xl text-sm transition-all shadow-[0_0_10px_rgba(59,130,246,0.3)] hover:shadow-[0_0_15px_rgba(59,130,246,0.5)] text-center inline-block cursor-none"
                         >
-                            👁️ Visualizza Carta
+                            👁️ Voir la Carte
                         </Link>
                     )}
                 </div>

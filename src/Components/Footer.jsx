@@ -17,18 +17,18 @@ const Footer = () => {
                             <img src={logoNavBar} alt="Magic Store Logo" className="h-12 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity" />
                         </Link>
                         <p className="text-sm leading-relaxed max-w-sm">
-                           ATTENZIONE!!! Non è un vero shop ma solo un progetto personale per mostrare le mie competenze. Tutte le carte e i dati sono presi da Scryfall, mentre i prodotti reali sono simulati tramite Shopify. Grazie per aver visitato il mio progetto!
+                           ATTENTION !!! Ce n'est pas une vraie boutique, mais seulement un projet personnel pour présenter mes compétences. Toutes les cartes et les données proviennent de Scryfall, tandis que les produits réels sont simulés via Shopify. Merci d'avoir visité mon projet !
                         </p>
                     </div>
 
                     {/* 2. Link Rapidi */}
                     <div>
-                        <h4 className="text-white font-bold uppercase tracking-widest text-xs mb-6">Navigazione</h4>
+                        <h4 className="text-white font-bold uppercase tracking-widest text-xs mb-6">Navigation</h4>
                         <ul className="space-y-3 text-sm">
-                            <li><Link to="/" className="hover:text-amber-500 transition-colors flex items-center gap-2"><span className="text-amber-500/50">›</span> Home</Link></li>
-                            <li><Link to="/sets" className="hover:text-amber-500 transition-colors flex items-center gap-2"><span className="text-amber-500/50">›</span> Espansioni</Link></li>
-                            <li><Link to="/products" className="hover:text-amber-500 transition-colors flex items-center gap-2"><span className="text-amber-500/50">›</span> Magazzino</Link></li>
-                            <li><Link to="/cart" className="hover:text-amber-500 transition-colors flex items-center gap-2"><span className="text-amber-500/50">›</span> Carrello</Link></li>
+                            <li><Link to="/" className="hover:text-amber-500 transition-colors flex items-center gap-2"><span className="text-amber-500/50">›</span> Accueil</Link></li>
+                            <li><Link to="/sets" className="hover:text-amber-500 transition-colors flex items-center gap-2"><span className="text-amber-500/50">›</span> Extensions</Link></li>
+                            <li><Link to="/products" className="hover:text-amber-500 transition-colors flex items-center gap-2"><span className="text-amber-500/50">›</span> Boutique</Link></li>
+                            <li><Link to="/cart" className="hover:text-amber-500 transition-colors flex items-center gap-2"><span className="text-amber-500/50">›</span> Panier</Link></li>
                         </ul>
                     </div>
 
@@ -39,11 +39,11 @@ const Footer = () => {
                 {/* Bottom line e Copyright */}
                 <div className="pt-8 border-t border-neutral-800 text-xs text-slate-600 flex flex-col md:flex-row justify-between items-center gap-4">
                     <p>
-                        © {new Date().getFullYear()} Magic Store. Tutti i diritti riservati. <br className="md:hidden" />
-                        <span className="md:ml-2">Sviluppato da <a href="https://www.giuseppesaia.fr" target="_blank" rel="noopener noreferrer" className="text-amber-500 hover:underline">Giuseppe Saia</a></span>
+                        © {new Date().getFullYear()} Magic Store. Tous droits réservés. <br className="md:hidden" />
+                        <span className="md:ml-2">Développé par <a href="https://www.giuseppesaia.fr" target="_blank" rel="noopener noreferrer" className="text-amber-500 hover:underline">Giuseppe Saia</a></span>
                     </p>
                     <p className="text-[10px] text-center md:text-right max-w-xl">
-                        Magic: The Gathering, i suoi loghi e tutte le illustrazioni sono marchi registrati e di proprietà di Wizards of the Coast LLC. Questo sito non è affiliato o sponsorizzato da Wizards of the Coast.
+                        Magic: The Gathering, ses logos et toutes les illustrations sont des marques déposées de Wizards of the Coast LLC. Ce site n'est ni affilié ni parrainé par Wizards of the Coast.
                     </p>
                 </div>
             </div>

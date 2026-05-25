@@ -80,9 +80,12 @@ const ScryfallCard = ({ card, isPresent, availableQuantity }) => {
                             </button>
                         </>
                     ) : (
-                        <div className="text-center text-xs text-slate-600 font-medium py-2 bg-slate-950/40 rounded-lg border border-slate-950">
-                            Solo consultazione
-                        </div>
+                        <Link 
+                            to={`/product/${card.id}`}
+                            className="w-full bg-blue-500 hover:bg-blue-400 text-white font-black py-2.5 px-4 rounded-xl text-sm transition-all shadow-[0_0_10px_rgba(59,130,246,0.3)] hover:shadow-[0_0_15px_rgba(59,130,246,0.5)] text-center inline-block"
+                        >
+                            👁️ Visualizza Carta
+                        </Link>
                     )}
                 </div>
             </div>

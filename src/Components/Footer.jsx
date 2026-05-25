@@ -17,7 +17,7 @@ const Footer = () => {
                             <img src={logoNavBar} alt="Magic Store Logo" className="h-12 w-auto object-contain opacity-80 hover:opacity-100 transition-opacity" />
                         </Link>
                         <p className="text-sm leading-relaxed max-w-sm">
-                            Il punto di ritrovo per collezionisti e giocatori. Esplora migliaia di carte dal multiverso, scopri le ultime espansioni e arricchisci il tuo grimorio con i pezzi più rari.
+                           Non è un vero shop ma solo un progetto personale per mostrare le mie competenze. Tutte le carte e i dati sono presi da Scryfall, mentre i prodotti reali sono simulati tramite Shopify. Grazie per aver visitato il mio progetto!
                         </p>
                     </div>
 
@@ -33,25 +33,14 @@ const Footer = () => {
                     </div>
 
                     {/* 3. Contatti / Info */}
-                    <div>
-                        <h4 className="text-white font-bold uppercase tracking-widest text-xs mb-6">Supporto</h4>
-                        <ul className="space-y-3 text-sm">
-                            <li className="flex items-center gap-2">
-                                <svg className="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-                                <a href="mailto:info@magicstore.com" className="hover:text-white transition-colors">info@magicstore.com</a>
-                            </li>
-                            <li className="flex items-center gap-2">
-                                <svg className="w-4 h-4 text-slate-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
-                                <span>+39 012 3456789</span>
-                            </li>
-                        </ul>
-                    </div>
+                    
                 </div>
 
                 {/* Bottom line e Copyright */}
                 <div className="pt-8 border-t border-neutral-800 text-xs text-slate-600 flex flex-col md:flex-row justify-between items-center gap-4">
                     <p>
-                        © {new Date().getFullYear()} Magic Store. Tutti i diritti riservati.
+                        © {new Date().getFullYear()} Magic Store. Tutti i diritti riservati. <br className="md:hidden" />
+                        <span className="md:ml-2">Sviluppato da <a href="https://www.giuseppesaia.fr" target="_blank" rel="noopener noreferrer" className="text-amber-500 hover:underline">Giuseppe Saia</a></span>
                     </p>
                     <p className="text-[10px] text-center md:text-right max-w-xl">
                         Magic: The Gathering, i suoi loghi e tutte le illustrazioni sono marchi registrati e di proprietà di Wizards of the Coast LLC. Questo sito non è affiliato o sponsorizzato da Wizards of the Coast.

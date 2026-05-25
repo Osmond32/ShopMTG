@@ -100,7 +100,8 @@ const ProductsPage = () => {
 
     // Capiamo quali carte mostrare: se l'utente ha cercato qualcosa mostriamo i risultati di Scryfall,
     // altrimenti mostriamo SUBITO la vetrina dei prodotti Shopify!
-    const cardsToDisplay = cards.length > 0 ? cards : shopifyProducts;
+    // Se c'è una query attiva, mostriamo i risultati Scryfall (anche se array vuoto mentre carica).
+    const cardsToDisplay = query ? cards : shopifyProducts;
 
     // Funzione di controllo per accendere il bollino "Disponibile" quando cerchi su Scryfall
     const checkIfPresent = (cardName) => {
